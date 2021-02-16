@@ -53,10 +53,11 @@ print_r($senasPliusNaujasMasyvas);
 echo '<br><br><br><br>';
 
 // Iš masyvo elementų sukurkite du naujus masyvus. Vienas turi būti sudarytas iš neporinių indekso reikšmių, o kitas iš porinių;
-
+echo '<br>Porines ir neporines indekso reiksmes:<br>';
 $porinis = array_filter(array_keys($senasPliusNaujasMasyvas), (function($skaicius) {return $skaicius % 2 === 0; }));
 $nePorinis = array_filter(array_keys($senasPliusNaujasMasyvas), (function($skaicius) {return $skaicius % 2 !== 0; }));
 
+echo '<pre>';
 print_r($porinis);
 echo '<br><br><br><br>';
 print_r($nePorinis);
@@ -64,8 +65,19 @@ echo '<br><br><br><br>';
 
 
 //KUR G UZDUOTIS??????????????????????????????????????????????????????????????????????????????????????????????????????
+//cia:
 
-// Suraskite pirmą (mažiausią) indeksą, kurio elemento reikšmė didesnė už 10;
+// G) Masyvo elementus su poriniais indeksais padarykite lygius 0 jeigu jie didesni už 15;
+
+foreach($porinis as $key => &$value){
+    if($value > 15){
+        $value = 0;
+    }
+}
+unset($value);
+print_r($porinis);
+
+// H) Suraskite pirmą (mažiausią) indeksą, kurio elemento reikšmė didesnė už 10;
 
 function didesnisUzDesimt($skaicius){
     return $skaicius > 10;
@@ -74,6 +86,7 @@ $skaiciusDidesnisUzDesimt = array_filter($senasPliusNaujasMasyvas, 'didesnisUzDe
 sort($skaiciusDidesnisUzDesimt);
 print_r($skaiciusDidesnisUzDesimt[0]);
 
+// I)
 // Naudodami funkciją unset() iš masyvo ištrinkite visus elementus turinčius porinį indeksą;
 echo '<br><br>unset uzdavinys: <br><br>';
 
