@@ -1,11 +1,10 @@
-  <!-- array_map( "callback", array_keys($array), $array); <---- kaip pasiusti dvi arrays, kai viena is ju - tos pacios array indeksu array -->
 
 <!-- Sugeneruokite masyvą iš 30 elementų (indeksai nuo 0 iki 29), kurių reikšmės yra atsitiktiniai skaičiai nuo 5 iki 25. -->
  
 <?php
 
 echo '<br><br><br>------------PIRMA UZDUOTIS-----------<br><br><br><br>';
-
+echo '<pre>';
 // function add($nulis){
 //     return $nulis + rand(5, 25);
 // }
@@ -57,7 +56,6 @@ echo '<br>Porines ir neporines indekso reiksmes:<br>';
 $porinis = array_filter(array_keys($senasPliusNaujasMasyvas), (function($skaicius) {return $skaicius % 2 === 0; }));
 $nePorinis = array_filter(array_keys($senasPliusNaujasMasyvas), (function($skaicius) {return $skaicius % 2 !== 0; }));
 
-echo '<pre>';
 print_r($porinis);
 echo '<br><br><br><br>';
 print_r($nePorinis);
@@ -83,32 +81,17 @@ function didesnisUzDesimt($skaicius){
     return $skaicius > 10;
 }
 $skaiciusDidesnisUzDesimt = array_filter($senasPliusNaujasMasyvas, 'didesnisUzDesimt'); 
-sort($skaiciusDidesnisUzDesimt);
+// sort($skaiciusDidesnisUzDesimt); 
 print_r($skaiciusDidesnisUzDesimt[0]);
 
 // I)
 // Naudodami funkciją unset() iš masyvo ištrinkite visus elementus turinčius porinį indeksą;
 echo '<br><br>unset uzdavinys: <br><br>';
 
-// function poriniuAtranka($key => $el){
-//     if ($key % 2 === 0){
-//         unset($key);
-//     } 
-// }
-// print_r(array_map('poriniuAtranka', array_keys($senasPliusNaujasMasyvas), $senasPliusNaujasMasyvas));
-
-// $masyvoIlgis = count($senasPliusNaujasMasyvas);
-// for ($i = 0; $i < $masyvoIlgis; $i = $i + 2) {
-//     unset($GLOBALS[$senasPliusNaujasMasyvas[$i]]);
-// }
-
-// print_r($senasPliusNaujasMasyvas);
-
 $masyvoIlgis = count($senasPliusNaujasMasyvas);
 for ($i = 0; $i < $masyvoIlgis; $i = $i + 2){
     unset($senasPliusNaujasMasyvas[$i]);
 }
-
 print_r($senasPliusNaujasMasyvas);
 
 echo '<br><br><br>------------TRECIA UZDUOTIS-----------<br><br><br><br>';
@@ -124,8 +107,8 @@ $countD = 0;
 for($i = 0; $i <200; $i++){
     array_push($array, chr(rand(65, 68)));
 }
-
-print_r($array);
+echo 'atkomentuok print r';
+// print_r($array);
 
 for($i = 0; $i < count($array); $i++){
     switch ($array[$i]) {
@@ -138,13 +121,11 @@ for($i = 0; $i < count($array); $i++){
         case 'C':
             $countC++;
             break;
-        case 'D':
-            $countD++;
-            break;
         default:
-            echo 'kazkokia tai nesamone cia tau susigeneravo';    
+            $countD++;
     }
 }
+echo "a: $countA, b: $countB, c: $countC, d: $countD;";
 echo '<br><br><br>------------KETVIRTA UZDUOTIS-----------<br><br><br><br>';
 // Išrūšiuokite 3 uždavinio masyvą pagal abecėlę.
  
@@ -174,7 +155,6 @@ for($i = 0; $i <200; $i++){
 for ($i = 0; $i < 200; $i++){
     array_push($arrayABC, $arrayA[$i] . $arrayB[$i] . $arrayC[$i]);
 }
-echo '<pre>';
 print_r(array_count_values($arrayABC));
 echo '<br><br> skirtingu kombinaciju yra: ' . count((array_count_values($arrayABC)));
 
@@ -190,8 +170,6 @@ while(count($masyvas)<100){
         array_push($masyvas, $skaicius);
     }
 }
-
-echo '<pre>';
 print_r($masyvas);
 
 $masyvas2 = [];
@@ -201,29 +179,22 @@ while(count($masyvas2)<100){
         array_push($masyvas2, $skaicius);
     }
 }
-
-echo '<pre>';
 print_r($masyvas2);
 
 echo '<br><br><br>------------SEPTINTA UZDUOTIS-----------<br><br><br><br>';
 
 // Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 6 uždavinio masyve, bet nėra antrame 6 uždavinio masyve.
 
-$arr = array_diff($masyvas, $masyvas2);
-echo 'pre';
-print_r($arr);
+print_r(array_diff($masyvas, $masyvas2));
 
 echo '<br><br><br>------------ASTUNTA UZDUOTIS-----------<br><br><br><br>';
 // Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 6 uždavinio masyvuose.
 
-$arr = array_intersect($masyvas, $masyvas2);
-echo 'pre';
-print_r($arr);
+print_r(array_intersect($masyvas, $masyvas2));
 
 echo '<br><br><br>------------DEVINTA UZDUOTIS-----------<br><br><br><br>';
 // Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės iš būtų antrojo masyvo.
 
-echo '<pre>';
 print_r(array_slice(array_combine($masyvas2, $masyvas), 0, 6, true));
 
 echo '<br><br><br>------------DESIMTA UZDUOTIS-----------<br><br><br><br>';
@@ -235,7 +206,7 @@ while(count($masyvas10) < 10){
     array_push($masyvas10, ($masyvas10[$i] + $masyvas10[$i+1]));
     $i++;
 }
-echo '<pre>';
+
 print_r($masyvas10);
 
 /////currrrenttt???
