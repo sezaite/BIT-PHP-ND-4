@@ -5,9 +5,6 @@
 
 echo '<br><br><br>------------PIRMA UZDUOTIS-----------<br><br><br><br>';
 echo '<pre>';
-// function add($nulis){
-//     return $nulis + rand(5, 25);
-// }
 
 $masyvas = array_fill(0, 30, 0);
 $galutinisMasyvas = (array_map(function($nulis) {return $nulis + rand(5, 25); }, $masyvas));
@@ -179,7 +176,7 @@ while(count($masyvas2)<100){
         array_push($masyvas2, $skaicius);
     }
 }
-print_r($masyvas2);
+_d($masyvas2);
 
 echo '<br><br><br>------------SEPTINTA UZDUOTIS-----------<br><br><br><br>';
 
@@ -208,6 +205,7 @@ while(count($masyvas10) < 10){
 }
 
 print_r($masyvas10);
+_dc($masyvas10);
 
 /////currrrenttt???
 
